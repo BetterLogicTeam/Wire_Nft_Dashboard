@@ -1,0 +1,28 @@
+@media screen and (max-width:320px) {
+    .tkn img{
+        margin-left: 5.4rem !important;
+    }
+}
+
+@media (min-width:320px)  and (max-width:375px) {
+    .tkn img{
+        margin-left: 7rem;
+    }
+}
+
+@media (min-width:375px)  and (max-width:600px) {
+    .tkn img{
+        margin-left: 8.7rem;
+    }
+}
+
+@media (min-width:600px)  and (max-width:800px) {
+    .upp{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center !important;
+        margin: 0;
+        padding: 0;
+    }
+}

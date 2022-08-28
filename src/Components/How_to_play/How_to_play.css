@@ -1,0 +1,42 @@
+@media (min-width:800px) and (max-width:1100px) {
+    
+
+    .how-it-works {
+        color: #fff;
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: 700;
+        text-align: center;
+        min-width: 927px !important;
+        BACKGROUND: #20163900;
+    }
+}
+
+/* @media (min-width:1100px) and (max-width:1440px) {
+    
+
+    .how-it-workse {
+        color: #fff;
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: 700;
+        text-align: center;
+        min-width: 1027px !important;
+        BACKGROUND: #20163900;
+    }
+} */
+
+
+/* @media (min-width:1441px) and (max-width:1660px) {
+    
+
+    .how-it-workse {
+        color: #fff;
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: 700;
+        text-align: center;
+        min-width: 1027px !important;
+        BACKGROUND: #20163900;
+    }
+} */

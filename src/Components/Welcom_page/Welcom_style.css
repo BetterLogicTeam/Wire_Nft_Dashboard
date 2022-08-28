@@ -1,0 +1,169 @@
+/* html {
+    background: linear-gradient(217deg, rgba(93, 9, 116, 1) 0%, rgba(24, 3, 102, 1) 53%, rgba(82, 1, 153, 1) 100%, rgba(73, 7, 101, 1) 1000%);
+    background-size: cover;
+} */
+/* 
+.wrapper_main {
+    width: 100%;
+    float: left;
+    height: auto;
+}
+
+.wrapper {
+    width: 900px;
+    margin: 0px auto;
+    font-family: 'Roboto', sans-serif;
+   
+}
+
+.wrapper h6 {
+    background-color: #cacaca;
+    font-size: 13px;
+    font-weight: 300;
+    width: 90%;
+    line-height: 19px;
+    float: left !important;
+    margin: 0px;
+    text-align: justify;
+    padding: 5%;
+} */
+
+.header {
+    width: 95%;
+    float: left;
+    background-color: #0088c6;
+    padding: 22px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+    width: 40%;
+    float: left;
+    padding-left: 68px;
+}
+
+.number {
+    width: 34%;
+    float: right;
+    font-size: 14px;
+    text-align: -webkit-right;
+    color: #fff;
+    line-height: 25px;
+    margin-right: 72px;
+}
+
+.main {
+    width: 60%;
+    margin: 30px 20%;
+    background-color: #02232dd1;
+    padding: 3%;
+    float: left;
+    border: solid 2px #063bb1;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.main h1 {
+    width: 100%;
+}
+
+.main1 {
+    width: 100%;
+    float: left;
+    /* background-color: #004a7c; */
+}
+
+.main p {
+    width: 100%;
+    font-size: 14px;
+}
+
+.main h2 {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.but {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.but a {
+    padding: 14px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: #f11f09;
+}
+
+.photo {
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+}
+
+.photo h5 {
+    width: 50%;
+    float: left;
+}
+
+.photo h5 img {
+    width: 100%;
+    float: left;
+}
+
+.photo p {
+    width: 48%;
+    float: right;
+    padding-top: 30px;
+    font-size: 15px;
+}
+
+.photo h1 {
+    padding: 10px 22px;
+    float: left;
+    border: solid 4px #02c54c;
+    width: initial;
+    font-size: 16px;
+    margin-left: 14px;
+}
+
+@media screen and (min-width:320px) and (max-width:700px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .logo {
+        width: 38%;
+        padding-left: 0px;
+    }
+
+    .number {
+        width: 60%;
+        float: right;
+        font-size: 13px;
+        margin-right: 0px;
+    }
+
+    .main {
+        width: 90%;
+        margin: 30px 3%;
+        padding: 2%;
+    }
+}
+
+.WelcomBTN{
+    color: #fff;
+    text-decoration: none;
+    background-color: #ed2b50;
+    border-radius: 10px;
+    padding: 6px 14px;
+}
+
+.welcom_main{
+    background: linear-gradient(125deg, rgb(45, 12, 104) 0%, rgb(48, 49, 102) 37%, rgb(55, 5, 68) 100%); 
+       border-color: rgb(243, 167, 53);
+       color: #fff !important;
+}

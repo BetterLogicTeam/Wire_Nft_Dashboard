@@ -1,0 +1,25 @@
+table{
+    width: 100%;
+}
+thead{
+    background-color: rgba(0, 0, 0, .2);    
+    color: rgb(255 255 255 / 80%);
+}
+th{
+    padding: 0.7rem;
+    font-size: 1rem;
+    max-width: 300px;
+}
+td{    
+    padding: 0.5rem;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.table_main{
+    height: 100% !important;
+    overflow-x: scroll;
+}
+.table_main::-webkit-scrollbar{
+    width: 0px;
+}

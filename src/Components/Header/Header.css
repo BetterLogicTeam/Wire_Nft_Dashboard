@@ -1,0 +1,56 @@
+.home img{
+    width: 200px;
+}
+
+.nev{
+    color: white !important;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    background-color: rgb(45,21,103);
+}
+
+.alna{
+    margin-left: 4rem;
+}
+
+.hxn{
+    margin-right: 15px;
+}
+
+@media screen and (max-width:800px) {
+    .alna{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .emn{
+        text-align: center;
+    }
+}
+
+@media (min-width:800px) and (max-width:1024px) {
+
+    .alna{
+        margin-left: .5rem;
+    }
+    
+    .hxn{
+        margin-right: 0px;
+    }
+
+    .wallet{
+        margin-right: 2px !important;
+        font-size: 16px !important;
+    }
+}
+
+.wallet{
+    color: chocolate !important;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+

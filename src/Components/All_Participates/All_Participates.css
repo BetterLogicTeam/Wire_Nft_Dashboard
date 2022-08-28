@@ -1,0 +1,11 @@
+.progress-row{
+    padding: 0;
+    margin: 0;
+    height:7px;
+    width: 100%;   
+}
+.progress-bar-row{    
+    padding: 0;
+    margin: 0;
+    height: 7px;    
+}

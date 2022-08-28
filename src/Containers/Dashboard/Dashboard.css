@@ -1,0 +1,6 @@
+.bg-b{
+    background-image: linear-gradient(90deg, rgb(11, 22, 149), rgb(189, 39, 197)) !important;    
+}
+.profile-login {
+    background: linear-gradient(to bottom left, #0033cc 0%, #ff0066 100%) !important;
+}
