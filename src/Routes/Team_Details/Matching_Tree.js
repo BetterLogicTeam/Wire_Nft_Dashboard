@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { PagePath } from "../../Components";
 import user3red from '../../assets/red-icon.png'
 import treeimg1 from '../../assets/treeimg1new.png'
@@ -16,6 +16,8 @@ const Matching_Tree = () => {
 
     const [Idnumer, setIdnumer] = useState(user)
 
+
+    const prevCountRef = useRef();
 
     const [userdata, setuserdata] = useState(
         [
@@ -271,6 +273,8 @@ const Matching_Tree = () => {
             // let uId = ress?.uid;
             // let status = ress?.status
 
+
+            console.log("prevCountRef",prevCountRef.current);
             
             let responce = await API?.post('/binary_tree', {
                 "uid": Idnumer,
@@ -521,7 +525,7 @@ const Matching_Tree = () => {
                     sponser: ''
                 },
             ])
-            console.log("Res_API", responce[0].totalright);
+            console.log("Res_API", responce);
             let arr = []
             responce?.forEach((item, index) => {
 
@@ -530,14 +534,14 @@ const Matching_Tree = () => {
                     id: item.uid,
                     registration_date: item?.activationdate,
                     status: item.activationdate ? 'Active' : 'UnActive',
-                    total_left: item.totalleft,
-                    total_left_active: item.lcount,
+                    total_left: item.left_count,
+                    total_left_active: item.totalleft,
                     left_business: item.lbv,
                     package_amount: item.packageamount,
                     topup_date: item.activationdate,
                     package: item.package,
-                    total_right: item.totalright,
-                    total_right_active: item.lcount,
+                    total_right: item.right_count,
+                    total_right_active: item.totalright,
                     right_business: item.rbv,
                     sponser: item.sid
                     // date: item?.dd
@@ -595,13 +599,13 @@ const Matching_Tree = () => {
             team_info_div_data[0].innerHTML = 'Registration Date :';
             team_info_div_data[1].innerHTML = 'Status :';
             team_info_div_data[2].innerHTML = 'Total Left :';
-            team_info_div_data[3].innerHTML = 'Total Left Active :';
+            // team_info_div_data[3].innerHTML = 'Total Left Active :';
             team_info_div_data[4].innerHTML = 'Left Business :';
             team_info_div_data[5].innerHTML = 'Packgae Amount :';
             team_info_div_data[6].innerHTML = 'Topup Date: ';
             team_info_div_data[7].innerHTML = 'Packgae : ';
             team_info_div_data[8].innerHTML = 'Total Right : ';
-            team_info_div_data[9].innerHTML = 'Total Right Active : ';
+            // team_info_div_data[9].innerHTML = 'Total Right Active : ';
             team_info_div_data[10].innerHTML = 'Right Business : ';
             team_info_div.classList.add('d-none');
             sponser.innerHTML = "Sponser : ";
@@ -609,6 +613,7 @@ const Matching_Tree = () => {
         }
     useEffect(() => {
         referral_API()
+        prevCountRef.current = Idnumer;
     }, [Idnumer])
 
 

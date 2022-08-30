@@ -36,11 +36,11 @@ function CollapsibleExample() {
             <Nav.Link href="#tokenomics" className="hxn text-white">
               <Link to="/Tokenomics_main" className="Styelnone">Tokenomics</Link>
             </Nav.Link>
-            {/* <Nav.Link  className="hxn text-white">
-            <Link to="/Mint" className="Styelnone">
+            <Nav.Link  className="hxn text-white">
+            <Link to="/OTP" className="Styelnone">
               Mint
               </Link>
-            </Nav.Link> */}
+            </Nav.Link>
             <Nav.Link href="https://keen-croissant-bc5ca8.netlify.app/Items/horse_racing" className="hxn text-white">
               Marketplace
             </Nav.Link>

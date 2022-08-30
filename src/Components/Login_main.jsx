@@ -7,6 +7,16 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Web3 from 'web3'
+import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
+
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import IconButton from '@mui/material/IconButton';
+
+
+
 
 
 
@@ -19,8 +29,21 @@ function Login_main() {
     const [isSubmit, setisSubmit] = useState(false)
     const [checkbox, setcheckbox] = useState(false)
     const [spinnerload, setspinnerload] = useState(false)
+    const [values, setValues] = React.useState({
+        password: '',
+        showPassword: false,
+      });
 
 
+      const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+      };
+      const handleClickShowPassword = () => {
+        setValues({
+          ...values,
+          showPassword: !values.showPassword,
+        });
+      };
     const schema = yup.object().shape({
         uid: yup.string().required("Id is required"),
         password: yup.string().required("Password is required")
@@ -44,20 +67,20 @@ function Login_main() {
             }
 
         )
-        let res_here=await API.get(`/getDashboardValues?id=${data.uid}`)
+        let res_here = await API.get(`/getDashboardValues?id=${data.uid}`)
         // console.log("Response",res_here.data.data.address);
-        console.log("Res",res_here.data.data[0].address);
+        console.log("Res", res_here.data.data[0].address);
         if (res.data.data == "Successfull") {
             toast.success(`Login Successfull`)
-        localStorage.setItem("user", data.uid);
-        // if(res_here.data.data[0].address==""){
+            localStorage.setItem("user", data.uid);
+            // if(res_here.data.data[0].address==""){
 
-        //     history('/Wallet_Address_change')
-        // }else{
+            //     history('/Wallet_Address_change')
+            // }else{
             history('/dashboard')
             window.onload()
 
-        
+
         } else {
             toast.error(`${res.data.data}`)
             setspinnerload(false)
@@ -68,7 +91,7 @@ function Login_main() {
     }
 
 
-    
+
 
 
     return (
@@ -96,8 +119,34 @@ function Login_main() {
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
+                                               
                                                     <div class="floating-label form-group">
-                                                        <input type="password" class="floating-input  form-control" name="password" id="password" {...register("password", { required: true })} />
+                                                    <OutlinedInput
+                                                    className=" floating-input  form-control" name="password"
+                                                        id="outlined-adornment-password"
+                                                        type={values.showPassword ? 'text' : 'password'}
+                                                        // value={values.password}
+                                                        {...register("password", { required: true })}
+                                                        onChange={handleChange('password')}
+                                                        endAdornment={
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                    aria-label="toggle password visibility"
+                                                                    onClick={handleClickShowPassword}
+                                                                    // onMouseDown={handleMouseDownPassword}
+                                                                    edge="end"
+                                                                >
+                                                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        }
+                                                        label="Password"
+                                                    />
+
+
+                                                        {/* <input type="password" class="floating-input  form-control" name="password" id="password" {...register("password", { required: true })}
+                                                        /> */}
+                                                        {/* <span className=''>{values ? <MdOutlineVisibility /> : <MdOutlineVisibilityOff />}</span> */}
                                                         <p className="p_tage">{errors.password?.message}</p>
 
 
@@ -105,14 +154,17 @@ function Login_main() {
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
+                                                    
                                                     <div class="custom-control custom-checkbox mb-3">
                                                         <input type="checkbox" class="custom-control-input" id="customCheck1" checked={checkbox} onChange={(e) => setcheckbox(e.target.checked)} />
                                                         <label class="custom-control-label text-white" for="customCheck1"> Remember Me</label>
                                                     </div>
                                                 </div>
+
+                                                
                                                 <div class="col-lg-6 rtl-left">
                                                     <Link to="/Forgat_Password">
-                                                    <a  class="text-primary float-right">Forgot Password?</a>
+                                                        <a class="text-primary float-right">Forgot Password?</a>
                                                     </Link>
                                                 </div>
                                             </div>

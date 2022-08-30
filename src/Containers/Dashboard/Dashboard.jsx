@@ -487,7 +487,7 @@ const Dashboard = () => {
           <Id_Number data={{ id: `${uID}` }} opt={id_number} />
           <Earned_Wire data={{ joined: particioatEarnd }} opt={earned_wire} />
           <Earned_USD data={{ earned_usd: `${earendUSD} USD`, total_usd: '652.9 ', text: "Participates have earned USD" }} />
-          <Affiliate data={{ earned_usd: `http://wirenft.io/Register_main?referrallink=${user}&position=Left`, total_usd: '652.9', text: "Affiliate Link Left" }} />
+          <Affiliate data={{ earned_usd: `http://localhost:3000/Register_main?referrallink=${user}&position=Left`, total_usd: '652.9', text: "Affiliate Link Left" }} />
 
         </div>
         <div className='col-lg-6 mb-5 mt-4'>

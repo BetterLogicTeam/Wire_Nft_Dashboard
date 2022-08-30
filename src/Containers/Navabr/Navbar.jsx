@@ -12,6 +12,9 @@ import { Activate_History, Buy_NFT, Coin_Address, Direct_Leg_Business, Home, Lev
 import Change_Password from '../../Components/Change_password/Change_Password';
 import Mint from '../../Components/Mint/Mint';
 import Forgat_Password from '../../Components/Forgat_Password/Forgat_Password';
+import ChangePasswor_eamil from '../../Components/Change_password/ChangePasswor_eamil';
+import Varify_email_change_password from '../../Components/Change_password/Varify_email_change_password';
+import Update_profile_email from '../../Routes/Activation/Update_profile_email';
 const Navbar = () => {
     const history = useNavigate();
     const handleLogout = () => {
@@ -319,6 +322,12 @@ const Navbar = () => {
             <Route path='/dashboard/Change_Password' element={<Change_Password />} />
             <Route path='/dashboard/Mint' element={<Mint  />} />
             <Route path='/dashboard/Forgat_Password' element={<Forgat_Password />} />
+            <Route path='/dashboard/ChangePasswor_eamil' element={<ChangePasswor_eamil />} />
+            <Route path='/dashboard/Varify_email_change_password' element={<Varify_email_change_password />} />
+            <Route path='/dashboard/Update_profile_email' element={<Update_profile_email />} />
+
+
+
 
 
 

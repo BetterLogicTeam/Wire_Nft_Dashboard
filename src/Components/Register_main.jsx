@@ -7,23 +7,47 @@ import { API } from '../Redux/actions/API'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import IconButton from '@mui/material/IconButton';
 function Register_main() {
 
     let history = useNavigate()
     const [checkbox, setcheckbox] = useState(false)
     const [userId, setuserId] = useState(null)
     const [spinnerload, setspinnerload] = useState(false)
+    const [checkreffarl, setcheckreffarl] = useState(false)
     const [positionSid, setposition] = useState(null);
     const [RefID, setRefID] = useState(null)
+    const [values, setValues] = React.useState({
+        password: '',
+        showPassword: false,
+      });
 
+
+      const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+      };
+      const handleClickShowPassword = () => {
+        setValues({
+          ...values,
+          showPassword: !values.showPassword,
+        });
+      };
+
+
+      
 
     const schema = yup.object().shape({
+        
         // sid: yup.string().required("Sponser id is required"),
         f_name: yup.string().required("User name is required"),
         mob: yup.string().required("Mobile number is required"),
         // .min(10, "Mobile number length should be at least 10 characters")
         // .max(10, "Mobile number cannot exceed more than 10 characters"),
-        position: yup.string().required("Position is required"),
+        // position: yup.string().required("Position is required"),
         email: yup.string().email().required(),
         psw: yup.string()
             .required("Password is required")
@@ -39,8 +63,25 @@ function Register_main() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema), });
     const onSubmitHandler = async (data) => {
         setspinnerload(true)
-        console.log("tayyabLoading",data.sid)
+        
+
+        try {
+            
+            console.log("positionSid",positionSid == "Left" ? "1":"2");
         let res = await API.post("/registration", 
+    
+        checkreffarl ?
+        {
+            "sid": RefID,
+            "f_name": data.f_name,
+            "uid": "0",
+            "email": data.email,
+            "accountnumber": "",
+            "psw": data.psw,
+            "mob": data.mob,
+            "position": positionSid == "Left" ? "1":"2"
+        } :
+
         {
             "sid": data.sid,
             "f_name": data.f_name,
@@ -50,26 +91,34 @@ function Register_main() {
             "psw": data.psw,
             "mob": data.mob,
             "position": data.position
-        }
+        } 
+
+        
         );
         console.log("tayyabLoading", res);
 
         if (res.data.data == "Successfull") {
             localStorage.setItem("Name", data.f_name);
 
-            toast(`${res.data.data}`)
-            history(`/wellComePage/${data.email}`)
+            toast.success(`${res.data.data}`)
+            history(`/OTP/${data.email}`)
         } else {
-            toast(`${res.data.data}`)
+            toast.error(`${res.data.data}`)
             setspinnerload(false)
         }
         setspinnerload(false)
+        } catch (error) {
+            console.log("API ERROR",error);
+        }
+   
+
+
 
     };
 
     const getresponseId = async (e) => {
         let { value } = e.target;
-        console.log("Tayyab", value);
+        // console.log("Tayyab", value);
         if (value == "") {
             setuserId(null)
 
@@ -98,6 +147,7 @@ function Register_main() {
             console.log("LAST", URL);
 
             if (URL.includes("referrallink")) {
+                setcheckreffarl(true)
                 let pathArray = URL.split('&');
                 // console.log("LAST");
                 let UserID = pathArray[pathArray.length - 2]
@@ -155,34 +205,145 @@ function Register_main() {
                                                 <div id="ajax_loading" align="center"></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-lg-6">
+                                                {
+                                                  checkreffarl  ?
+                                                    <>
+                                                    <div class="col-lg-6">
                                                     <div class="floating-label form-group">
-                                                        {/* {
-                                                            RefID == null ? (<><input class="form-control mb-3"
+                                                        
+                                                        <input class="form-control mb-3"
                                                             {...register("sid", { required: true })}
                                                             placeholder="Enter Sponsor Id" type="text"
                                                             value={RefID}
+                                                           
                                                             onChange={
                                                                 (e) => {
                                                                     getresponseId(e)
                                                                 }
                                                             }
                                                         />
-                                                        <p className="p_tage">{errors.sid?.message}</p></>):
-                                                        (<><input class="form-control mb-3"
-                                                        placeholder="Enter Sponsor Id" type="text"
-                                                        value={RefID}
-                                                        onChange={
-                                                            (e) => {
-                                                                getresponseId(e)
-                                                            }
+                                                        <p className="p_tage">{errors.sid?.message}</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                        <input class="form-control mb-3 floating-input" placeholder="Sponsor Name" type="text" value={userId} disabled={true} />
+                                                        {/* <p className="p_tage">{errors.sid?.message}</p> */}
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                        <input class="form-control mb-3" placeholder="User Name" type="text" {...register("f_name", { required: true })} />
+                                                        <p className="p_tage">{errors.f_name?.message}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                        <input class="floating-input mb-3 form-control" placeholder="Mobile Number" type="number"  {...register("mob", { required: true })} />
+                                                        <p className="p_tage">{errors.mob?.message}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                        {
+                                                            positionSid == null ? (<><select class="floating-input form-control select_bg" data-val="true" data-val-required="Position is required" {...register("position", { required: true })}>
+                                                                <option value="">Select Postion</option>
+                                                                <option value="1">Left</option>
+                                                                <option value="2">Right</option>
+                                                            </select>
+                                                                <p className="p_tage">{errors.position?.message}</p>
+                                                                </>
+
+                                                            ) : <><input class="form-control mb-3 input-log-cls"
+                                                                placeholder="postion" type="text" value={positionSid}   />
+                                                                {/* <p className="p_tage">{errors.position?.message}</p> */}
+                                                                </>
                                                         }
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                        <input class="form-control mb-3 input-log-cls"
+                                                            placeholder="example@gmail.com" type="text" {...register("email", { required: true })} />
+                                                        <p className="p_tage">{errors.email?.message}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                    <OutlinedInput
+                                                    className="floating-input mb-3 form-control" name="password"
+                                                        id="outlined-adornment-password"
+                                                        type={values.showPassword ? 'text' : 'password'}
+                                                        // value={values.password}
+                                                        {...register("psw", { required: true })}
+                                                        onChange={handleChange('password')}
+                                                        placeholder="Password"
+                                                        endAdornment={
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                    aria-label="toggle password visibility"
+                                                                    onClick={handleClickShowPassword}
+                                                                    // onMouseDown={handleMouseDownPassword}
+                                                                    edge="end"
+                                                                >
+                                                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        }
+                                                        label="Password"
                                                     />
-                                                    <p className="p_tage">{errors.sid?.message}</p>
-                                                    </>)
-                                                        } */}
+                                                        {/* <input class="floating-input mb-3 form-control" placeholder="Password" type="password" {...register("psw", { required: true })} /> */}
+                                                        <p className="p_tage">{errors.psw?.message}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                    <OutlinedInput
+                                                    className="floating-input mb-3 form-control" name="password"
+                                                        id="outlined-adornment-password"
+                                                        type={values.showPassword ? 'text' : 'password'}
+                                                        // value={values.password}
+                                                        
+                                                        onChange={handleChange('password')}
+                                                        placeholder="Confirm Passwordiggh" {...register("cpsw", { required: true })}
+                                                        endAdornment={
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                    aria-label="toggle password visibility"
+                                                                    onClick={handleClickShowPassword}
+                                                                    // onMouseDown={handleMouseDownPassword}
+                                                                    edge="end"
+                                                                >
+                                                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        }
+                                                        label="Password"
+                                                    />
+                                                        {/* <input class="floating-input mb-3 form-control" placeholder="Confirm Password" {...register("cpsw", { required: true })} type="password" /> */}
+                                                        <p className="p_tage">{errors.cpsw?.message}</p>
 
-
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="custom-control custom-checkbox mb-3">
+                                                        <input class="" type="checkbox" value="true" checked={checkbox} onChange={(e) => setcheckbox(e.target.checked)} /><input name="TermsAndConditions" type="hidden" value="false" />
+                                                        <label class="" for="customCheck1" className='Styelnone'> I Agree Your <a href="#">Terms and Conditions</a></label>
+                                                    </div>
+                                                </div>
+                                                    
+                                                    </>:
+                                                    <>
+                                                    <div class="col-lg-6">
+                                                    <div class="floating-label form-group">
+                                                        
                                                         <input class="form-control mb-3"
                                                             {...register("sid", { required: true })}
                                                             placeholder="Enter Sponsor Id" type="text"
@@ -245,13 +406,57 @@ function Register_main() {
 
                                                 <div class="col-lg-6">
                                                     <div class="floating-label form-group">
-                                                        <input class="floating-input mb-3 form-control" placeholder="Password" type="password" {...register("psw", { required: true })} />
+                                                    <OutlinedInput
+                                                    className="floating-input mb-3 form-control" name="password"
+                                                        id="outlined-adornment-password"
+                                                        type={values.showPassword ? 'text' : 'password'}
+                                                        // value={values.password}
+                                                        {...register("psw", { required: true })}
+                                                        onChange={handleChange('password')}
+                                                        placeholder="Password"
+                                                        endAdornment={
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                    aria-label="toggle password visibility"
+                                                                    onClick={handleClickShowPassword}
+                                                                    // onMouseDown={handleMouseDownPassword}
+                                                                    edge="end"
+                                                                >
+                                                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        }
+                                                        label="Password"
+                                                    />
+                                                        {/* <input class="floating-input mb-3 form-control" placeholder="Password" type="password" {...register("psw", { required: true })} /> */}
                                                         <p className="p_tage">{errors.psw?.message}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="floating-label form-group">
-                                                        <input class="floating-input mb-3 form-control" placeholder="Confirm Password" {...register("cpsw", { required: true })} type="password" />
+                                                    <OutlinedInput
+                                                    className="floating-input mb-3 form-control" name="password"
+                                                        id="outlined-adornment-password"
+                                                        type={values.showPassword ? 'text' : 'password'}
+                                                        // value={values.password}
+                                                        
+                                                        onChange={handleChange('password')}
+                                                        placeholder="Confirm Password" {...register("cpsw", { required: true })}
+                                                        endAdornment={
+                                                            <InputAdornment position="end">
+                                                                <IconButton
+                                                                    aria-label="toggle password visibility"
+                                                                    onClick={handleClickShowPassword}
+                                                                    // onMouseDown={handleMouseDownPassword}
+                                                                    edge="end"
+                                                                >
+                                                                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                                </IconButton>
+                                                            </InputAdornment>
+                                                        }
+                                                        label="Password"
+                                                    />
+                                                        {/* <input class="floating-input mb-3 form-control" placeholder="Confirm Password" {...register("cpsw", { required: true })} type="password" /> */}
                                                         <p className="p_tage">{errors.cpsw?.message}</p>
 
                                                     </div>
@@ -262,6 +467,10 @@ function Register_main() {
                                                         <label class="" for="customCheck1" className='Styelnone'> I Agree Your <a href="#">Terms and Conditions</a></label>
                                                     </div>
                                                 </div>
+                                                    
+                                                    </>
+                                                }
+                                                
                                             </div>
                                             <button type="submit" class="btn btn-primary"
                                                 disabled={!checkbox}>{spinnerload ? (<><div class="spinner-border" role="status">

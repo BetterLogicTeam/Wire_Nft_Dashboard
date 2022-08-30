@@ -25,6 +25,12 @@ import { useState } from 'react';
 import Change_Password from './Components/Change_password/Change_Password';
 import Wallet_Address_change from './Components/Wallet_Address/Wallet_Address_change';
 import Forgat_Password from './Components/Forgat_Password/Forgat_Password';
+import OTP from './Components/Varify-OTP/OTP';
+import Varify_forget_Password from './Components/OTP_varify_forget_password/Varify_forget_Password';
+import Get_Password_result from './Components/OTP_varify_forget_password/Get_Password_result';
+import ChangePasswor_eamil from './Components/Change_password/ChangePasswor_eamil';
+import Varify_email_change_password from './Components/Change_password/Varify_email_change_password';
+import Update_profile_email from './Routes/Activation/Update_profile_email';
 function App() {
   const [userAddress, setuserAddress] = useState();
   console.log("userAddress",userAddress);
@@ -47,6 +53,13 @@ function App() {
           <Route path="wellComePage/:email" element={<WellComePage  />} />
           <Route path="Wallet_Address_change" element={<Wallet_Address_change  />} />
           <Route path='Forgat_Password' element={<Forgat_Password />} />
+          <Route path='Forget_Password_Result' element={<Get_Password_result />} />
+
+          <Route path='OTP/:email' element={<OTP  />} />
+          <Route path='Varify_forget_Password/:email' element={<Varify_forget_Password  />} />
+
+          
+
 
 
           <Route exact path="/Login" element={<LoginIndex  setuserAddress={setuserAddress} />} />
@@ -58,8 +71,14 @@ function App() {
             <Route path='/dashboard/Activate_History' element={<Activate_History />} />
             <Route path='/dashboard/Staking_Details' element={<Staking_Details />} />
             <Route path='/dashboard/Profile' element={<Profile />} />
+            <Route path='/dashboard/Update_profile_email/:email/:wallet' element={<Update_profile_email />} />
+
+            <Route path='/dashboard/ChangePasswor_eamil' element={<ChangePasswor_eamil />} />
+            <Route path='/dashboard/Varify_email_change_password/:email/:password' element={<Varify_email_change_password />} />
+
+
             <Route path='/dashboard/Change_Password' element={<Change_Password />} />
-            <Route path='/dashboard/Forgat_Password' element={<Forgat_Password />} />
+            {/* <Route path='/dashboard/Forgat_Password' element={<Forgat_Password />} /> */}
 
 
             <Route path='/dashboard/Referral_Income' element={<Referral_Income />} />
@@ -79,6 +98,9 @@ function App() {
                 <Route path='/dashboard/NFT_Address' element={<NFT_Address />} />
                 <Route path='/dashboard/Self_Address' element={<Self_Address userAddress={userAddress} />} />
                 <Route path='/dashboard/Mint' element={<Mint  />} />
+         
+
+
 
          
           </Route>

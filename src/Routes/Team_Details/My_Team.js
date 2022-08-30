@@ -12,6 +12,8 @@ const My_Team = () => {
 
     const [currentPage, setcurrentPage] = useState(1)
     const [listPerpage, setlistPerpage] = useState(10)
+    const [currentPage2, setcurrentPage2] = useState(1)
+    const [listPerpage2, setlistPerpage2] = useState(10)
     const [getuerid, setgetuerid] = useState("")
     const [filterValue, setFilterValue] = useState("");
     const [FilterRight, setFilterRight] = useState("")
@@ -28,7 +30,7 @@ const My_Team = () => {
 
             let responceRight = await API?.post('/MyLeftDownline', {
                 "uid": user,
-                "status": 1
+                "status": 2
             })
             responceRight = responceRight?.data?.data?.recordset;
             console.log("responceRight", responceRight);
@@ -186,8 +188,10 @@ const My_Team = () => {
 
     const indexOfLastPost = currentPage * listPerpage;
     const indexOfFirstPage = indexOfLastPost - listPerpage;
+    const indexOfLastPost2 = currentPage2 * listPerpage2;
+    const indexOfFirstPage2 = indexOfLastPost2 - listPerpage2;
     const currentPost = referralApi.slice(indexOfFirstPage, indexOfLastPost)
-    const currentPostleft = leftreferralApi.slice(indexOfFirstPage, indexOfLastPost)
+    const currentPostleft = leftreferralApi.slice(indexOfFirstPage2, indexOfLastPost2)
 
 
 
@@ -197,7 +201,7 @@ const My_Team = () => {
         cols: [
             { Header: 'S.No', accessor: 'sr' },
             { Header: 'ID', accessor: 'id' },
-            { Header: 'Wallet', accessor: 'Wallet' },
+            // { Header: 'Wallet', accessor: 'Wallet' },
             { Header: 'Registration Date', accessor: 'date_time' },
             { Header: 'Remark', accessor: 'remark' },
             { Header: 'Activation Date ', accessor: 'activation_date' },
@@ -241,7 +245,7 @@ const My_Team = () => {
                     columns={my_team.cols}
                 />
 
-                <Table_Buttons indexOfFirstPage={indexOfFirstPage} indexOfLastPost={indexOfLastPost} setcurrentPage={setcurrentPage} currentPage={currentPage} totalData={referralApi.length} listPerpage={listPerpage} />
+                <Table_Buttons indexOfFirstPage={indexOfFirstPage2} indexOfLastPost={indexOfLastPost2} setcurrentPage={setcurrentPage2} currentPage={currentPage2} totalData={leftreferralApi.length} listPerpage={listPerpage2} />
 
             </div>
             <div className="col-md-6 py-3 mt-5">
