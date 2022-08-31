@@ -31,6 +31,8 @@ import Get_Password_result from './Components/OTP_varify_forget_password/Get_Pas
 import ChangePasswor_eamil from './Components/Change_password/ChangePasswor_eamil';
 import Varify_email_change_password from './Components/Change_password/Varify_email_change_password';
 import Update_profile_email from './Routes/Activation/Update_profile_email';
+import ProtectedRoute from "./Paths/protectedRoutes";
+import PublicRoutes from "./Paths/publicRoutes";
 function App() {
   const [userAddress, setuserAddress] = useState();
   console.log("userAddress",userAddress);

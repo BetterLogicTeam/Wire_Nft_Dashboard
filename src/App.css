@@ -68,6 +68,7 @@ img,svg{
 @media screen and (min-width:320px)
 {
     .user-img{
+        z-index: 99;
         width: 20px;
     }
     .treeimg{
@@ -93,6 +94,7 @@ img,svg{
 @media screen and (min-width:425px)
 {
     .user-img{
+        z-index: 99;
         width: 25px;
     }
     .treeimg{
@@ -118,6 +120,7 @@ img,svg{
 @media screen and (min-width:768px)
 {
     .user-img{
+        z-index: 99;
         width: 50px;
     }
     .treeimg{
@@ -143,6 +146,7 @@ img,svg{
 @media screen and (min-width:1024px)
 {
     .user-img{
+        z-index: 99;
         width: 50px;
     }
     .treeimg{
@@ -166,6 +170,7 @@ img,svg{
 }
 .team-info{
     background-color: #133c4a;
+    z-index: 99;
 }
 .bg-b{
    background-color: #013779;

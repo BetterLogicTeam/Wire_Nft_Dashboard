@@ -16,7 +16,7 @@ const My_Team = () => {
     const [listPerpage2, setlistPerpage2] = useState(10)
     const [getuerid, setgetuerid] = useState("")
     const [filterValue, setFilterValue] = useState("");
-    const [FilterRight, setFilterRight] = useState("")
+    // const [FilterRight, setFilterRight] = useState("")
     
 
 
@@ -44,13 +44,10 @@ const My_Team = () => {
 
             console.log("Res", responce);
 
-
-
-            console.log("465539", getuerid);
             let arr = []
             let arrayLeft = []
             responce?.forEach((item, index) => {
-                if (FilterRight == 0 || FilterRight == "") {
+                if (filterValue == 0 || filterValue == "") {
                     arr?.push({
                         sr: index + 1,
                         id: `${item?.uid} `,
@@ -63,7 +60,7 @@ const My_Team = () => {
                     });
 
                 }
-                if (FilterRight == 1) {
+                if (filterValue == 1) {
                     item.top_update !== null ?
                         arr?.push({
                             sr: index + 1,
@@ -77,7 +74,7 @@ const My_Team = () => {
                         }) : <></>
 
                 }
-                if (FilterRight == 2) {
+                if (filterValue == 2) {
                     item.top_update == null ?
                         arr?.push({
                             sr: index + 1,
@@ -102,7 +99,7 @@ const My_Team = () => {
             )
 
             responceRight?.forEach((item, index) => {
-                console.log("getuerid", filterValue)
+                
                 if (filterValue == 0 || filterValue == "") {
                     // item.top_update !== null ?
                     arrayLeft?.push({
@@ -183,7 +180,7 @@ const My_Team = () => {
 
     useEffect(() => {
         referral_API()
-    }, [filterValue, FilterRight])
+    }, [filterValue])
 
 
     const indexOfLastPost = currentPage * listPerpage;
@@ -257,9 +254,9 @@ const My_Team = () => {
                     <p className="p-color mt-1" >Choose Status :</p>
                     <div className="col-md-4 col-lg-5 col-8 mt-n5">
                         <select className=" input bg-color ps-4"
-                            defaultValue={FilterRight}
-                            value={FilterRight}
-                            onChange={(e) => setFilterRight(e.target.value)}
+                            defaultValue={filterValue}
+                            value={filterValue}
+                            onChange={(e) => setFilterValue(e.target.value)}
                         >
                             <option value="">Select Status</option>
 

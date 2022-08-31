@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route,Navigate } from "react-router-dom";
 function PublicRoute({ component: Component, ...restOfProps }) {
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 
@@ -8,7 +8,7 @@ function PublicRoute({ component: Component, ...restOfProps }) {
       {...restOfProps}
       render={(props) =>
         isAuthenticated === 'true' ?
-          <Redirect to="/dashboard" /> :
+          <Navigate to="/dashboard" /> :
           <Component {...props} />
 
       }

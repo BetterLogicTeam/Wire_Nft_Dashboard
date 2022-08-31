@@ -72,6 +72,7 @@ function Login_main() {
         console.log("Res", res_here.data.data[0].address);
         if (res.data.data == "Successfull") {
             toast.success(`Login Successfull`)
+            localStorage.setItem("isAuthenticated", true);
             localStorage.setItem("user", data.uid);
             // if(res_here.data.data[0].address==""){
 

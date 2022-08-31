@@ -1,6 +1,6 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import { Layout } from "../../components"
+import { Redirect, Route,Navigate } from "react-router-dom";
+// import { Layout } from "../../components"
 function ProtectedRoute({ component: Component, ...restOfProps }) {
   const isAuthenticated = localStorage.getItem("isAuthenticated");
 console.log(isAuthenticated)
@@ -11,10 +11,10 @@ console.log(typeof Boolean(isAuthenticated))
       {...restOfProps}
       render={(props) =>
         isAuthenticated==='true' ?
-          <Layout>
+          // <Layout>
             <Component {...props} />
-          </Layout>
-          : <Redirect to="/login" />
+          // </Layout>
+          : <Navigate to="/Login_main" />
       }
     />
   );
