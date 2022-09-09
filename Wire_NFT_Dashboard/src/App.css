@@ -1,0 +1,178 @@
+body{    
+    background-image: linear-gradient(90deg, rgb(11, 22, 149), rgb(189, 39, 197));    
+    font-family: Roboto, sans-serif;
+    min-height:100vh;
+}
+.App{
+    height: 100vh;
+}
+.hidden-for-area{
+    display: none;
+    visibility: hidden;
+}
+.footer-visible{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.bg-color{
+    background-color: rgba(0, 0, 0, .2);
+}
+.h-color{
+    color: white;
+}
+.p-color{    
+    color: rgb(255 255 255 / 70%);
+}
+.br-1{    
+    border-radius: 1rem;
+}
+.border_bottom{
+    border-bottom:solid 1px white ;
+}
+.border_start{
+    border-left:solid 1px white ;
+}
+.border_right{
+    border-right: 2px solid rgb(255 255 255 / 25%);
+}
+img,svg{
+    vertical-align: middle;
+}
+.profile-login{
+   background-color:  rgb(40, 24, 183);
+}
+.btn-meta-mask{
+   background-color:  rgb(167, 54, 223) !important;
+}
+.bg-gray{
+ background-color: rgb(172, 172, 172);   
+}
+.profile-border{
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.input{
+    width: 100%;
+    padding: 0.5rem;
+    color: white;
+    border: 2px solid rgb(255 255 255 / 25%);
+}
+.shadow-withdraw
+{
+    box-shadow: 0 0 1rem #dce1df;
+    border:0;
+}
+
+@media screen and (min-width:320px)
+{
+    .user-img{
+        z-index: 99;
+        width: 20px;
+    }
+    .treeimg{
+        width: 168px;
+    }
+    .treeimg1{
+        width: 88px;
+    }
+    .treeimg2{
+        width: 48px;
+    }
+    .gap-img-1{
+        width: 68px !important ;
+    }
+    .gap-img-2{
+        width: 28px !important ;
+    }
+    .gap-img-3{
+        width: 20px !important ;
+    }
+}
+
+@media screen and (min-width:425px)
+{
+    .user-img{
+        z-index: 99;
+        width: 25px;
+    }
+    .treeimg{
+        width: 210px;
+    }
+    .treeimg1{
+        width: 110px;
+    }
+    .treeimg2{
+        width: 60px;
+    }
+    .gap-img-1{
+        width: 85px !important ;
+    }
+    .gap-img-2{
+        width: 35px !important ;
+    }
+    .gap-img-3{
+        width: 25px !important ;
+    }
+}
+
+@media screen and (min-width:768px)
+{
+    .user-img{
+        z-index: 99;
+        width: 50px;
+    }
+    .treeimg{
+        width: 420px;
+    }
+    .treeimg1{
+        width: 220px;
+    }
+    .treeimg2{
+        width: 120px;
+    }
+    .gap-img-1{
+        width: 170px !important ;
+    }
+    .gap-img-2{
+        width: 70px !important ;
+    }
+    .gap-img-3{
+        width: 50px !important ;
+    }
+}
+
+@media screen and (min-width:1024px)
+{
+    .user-img{
+        z-index: 99;
+        width: 50px;
+    }
+    .treeimg{
+        width: 420px;
+    }
+    .treeimg1{
+        width: 220px;
+    }
+    .treeimg2{
+        width: 120px;
+    }
+    .gap-img-1{
+        width: 170px !important ;
+    }
+    .gap-img-2{
+        width: 70px !important ;
+    }
+    .gap-img-3{
+        width: 50px !important ;
+    }
+}
+.team-info{
+    background-color: #133c4a;
+    z-index: 99;
+}
+.bg-b{
+   background-color: #013779;
+   width: 100%;
+}

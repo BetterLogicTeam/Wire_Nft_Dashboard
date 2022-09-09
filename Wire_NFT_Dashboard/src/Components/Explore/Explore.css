@@ -1,0 +1,35 @@
+
+
+.inner2{
+    border-radius: 30px;
+    background: linear-gradient(125deg, #2d0c68 0%, #303166 37%, #370544 100%);
+    border: none;
+}
+
+.emg2{
+    border-radius: 30px;
+}
+
+.carde2{
+    background: linear-gradient(125deg, #2d0c68 0%, #303166 37%, #370544 100%);
+    border: 2px solid #f3a735;
+    border-radius: 40px;
+    /* padding: 25px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 60%;
+}
+
+@media screen and (max-width:800px) {
+    .desktop_div{
+        display: none;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 4500px) {
+    .res_div {
+      display: none;
+    }
+  }
